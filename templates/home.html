@@ -4,8 +4,17 @@
 
 {% block content %}
 {% for todo in object_list %}
-  <h3>{{ todo.title }}</h3>
-  <p>{{ todo.explaination }}</p>
-  <p>{{ todo.deadline }}</p>
+  <p>
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.explaination }}</p>
+    {% if todo.status == 'O' %}
+      <p class="text-danger">Open</p>
+    {% else %}
+      <p class="text-success">Close</p>
+    {% endif %}
+    <p>{{ todo.deadline }}</p>
+    <a class="btn btn-outline-success" href="{% url 'todo_update' todo.pk %}">Update</a>
+  </p>
+  <hr>
 {% endfor %}
 {% endblock content %}

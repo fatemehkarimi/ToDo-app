@@ -1,9 +1,9 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.shortcuts import render
 from datetime import date
 from django.urls import reverse_lazy
 
-from .forms import ToDo_objCreateForm
+from .forms import ToDo_objCreateForm, ToDo_objUpdateForm
 from .models import ToDo_obj
 
 # Create your views here.
@@ -22,3 +22,9 @@ class ToDo_objCreateView(CreateView):
         form.instance.author = self.request.user
         form.instance.create_date = date.today()
         return super().form_valid(form)
+
+class ToDo_objUpdateView(UpdateView):
+    model = ToDo_obj
+    form_class = ToDo_objUpdateForm
+    template_name = 'todo_update.html'
+    success_url = reverse_lazy('home')
