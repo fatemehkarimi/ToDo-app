@@ -5,9 +5,9 @@ from django.contrib.auth import  get_user_model
 # Create your models here.
 class ToDo_obj(models.Model):
     title = models.CharField(max_length=200)
-    explaination = models.TextField()
+    explaination = models.TextField(blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateTimeField()
+    deadline = models.DateField()
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,

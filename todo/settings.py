@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
 
     'crispy_forms',
+    'widget_tweaks',
 
     'django.contrib.admin',
     'django.contrib.auth',
