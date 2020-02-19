@@ -3,18 +3,20 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-{% for todo in object_list %}
-  <p>
-    <h3>{{ todo.title }}</h3>
-    <p>{{ todo.explaination }}</p>
-    {% if todo.status == 'O' %}
-      <p class="text-danger">Open</p>
-    {% else %}
-      <p class="text-success">Close</p>
+  {% for todo in object_list %}
+    {% if request.user == todo.author %}
+      <p>
+        <h3>{{ todo.title }}</h3>
+        <p>{{ todo.explaination }}</p>
+        {% if todo.status == 'O' %}
+          <p class="text-danger">Open</p>
+        {% else %}
+          <p class="text-success">Close</p>
+        {% endif %}
+        <p>{{ todo.deadline }}</p>
+        <a class="btn btn-outline-success" href="{% url 'todo_update' todo.pk %}">Update</a>
+      </p>
+      <hr>
     {% endif %}
-    <p>{{ todo.deadline }}</p>
-    <a class="btn btn-outline-success" href="{% url 'todo_update' todo.pk %}">Update</a>
-  </p>
-  <hr>
-{% endfor %}
+  {% endfor %}
 {% endblock content %}

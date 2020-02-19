@@ -19,3 +19,6 @@ class ToDo_objUpdateForm(ModelForm):
     class Meta:
         model = ToDo_obj
         fields = ('title', 'explaination', 'deadline', 'status')
+        widgets = {
+            'deadline': DateInput()
+        }
