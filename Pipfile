@@ -7,7 +7,7 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-django = "==2.2.10"
+django = "==2.2.22"
 django-crispy-forms = "*"
 django-widget-tweaks = "*"
 
